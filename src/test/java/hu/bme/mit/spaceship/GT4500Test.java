@@ -58,6 +58,39 @@ class GT4500Test {
     // Assert
     assertEquals(true, result);
   }
+  @Test
+  void fireTorpedo_FireWithFirst_Success(){
+    // Arrange
+    ship = new GT4500(1, 0, 0, 0);
+    // Act
+    boolean result = ship.fireTorpedo(FiringMode.SINGLE);
+
+    // Assert
+    assertEquals(true, result);
+  }
+  @Test
+  void fireTorpedo_FireAlternating_Success(){
+    // Arrange
+    ship = new GT4500(1, 0, 1, 0);
+    // Act
+    boolean result = ship.fireTorpedo(FiringMode.SINGLE);
+    boolean result2 = ship.fireTorpedo(FiringMode.SINGLE);
+
+    // Assert
+    assertEquals(true, result);
+    assertEquals(true, result2);
+  }
+
+  @Test
+  void fireTorpedo_PrimaryEmptyTrySecondary_Success(){
+    // Arrange
+    ship = new GT4500(0, 0, 1, 0);
+    // Act
+    boolean result = ship.fireTorpedo(FiringMode.SINGLE);
+
+    // Assert
+    assertEquals(true, result);
+  }
 
   /**
    * Test the ship using the command line interface.
